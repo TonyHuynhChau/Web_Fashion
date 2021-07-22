@@ -1,0 +1,5 @@
+﻿
+@foreach (var item in Model)
+{
+    <a href="@Url.Action("Loai","Fashion",new { id = item.MaloaiSP})" class="list-group-item">@item.Tensanpham</a>
+}

@@ -1,0 +1,193 @@
+﻿@using Fashion.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<SANPHAM>
+
+@{ ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/Fashion.cshtml"; }
+
+<!-- Custom CSS -->
+<link href="~/Content/shop-homepage.css" rel="stylesheet"/>
+
+
+<div class="row carousel-holder">
+    <div class="col-md-12">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img class="slide-image" src="~/Sản Phẩm/banner.png" alt="">
+                </div>
+                <div class="item">
+                    <img class="slide-image" src="~/Sản Phẩm/Banner2.jpg" alt="">
+                </div>
+                <div class="item">
+                    <img class="slide-image" src="~/Sản Phẩm/banner3.jpg" alt="">
+                </div>
+                <div class="item">
+                    <img class="slide-image" src="~/Sản Phẩm/banner4.jpg" alt="">
+                </div>
+                <div class="item">
+                    <img class="slide-image" src="~/Sản Phẩm/banner5.jpg" alt="">
+                </div>
+            </div>
+            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<h3>Sản Phẩm Mới</h3>
+@foreach (var item in Model)
+{
+    <div class="col-sm-4 col-lg-4 col-md-4">
+        <div class="thumbnail">
+            <a href="@Url.Action("ChitietSP","Fashion" , new { id = @item.MaSP})">
+                <img style="border-radius:15%; width: 100%; height: 293px; " alt="@item.TenSP" src="~/Sản Phẩm/@item.Anhbia">
+            </a>
+            <div class="caption" style="margin-bottom:10px">
+                <h4 class="pull-right">@item.Giaban <strong>VNĐ</strong></h4>
+                <h4>
+                    <a href="@Url.Action("ChitietSP","Fashion" , new { id = @item.MaSP})">@item.TenSP</a>
+                </h4>
+                <a href="@Url.Action("ThemGioHang","GioHang",new {masp = @item.MaSP, strUrl = Request.Url.ToString() })" class="buy">Thêm Vào Giỏ</a>
+            </div>
+
+            <div class="ratings">
+                <p class="pull-right">12 reviews</p>
+                <p>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star-empty"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+}
+@section MenuTrang{
+   
+    <div class="MenuTrang">
+        @*Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount;*@
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+    </div>
+    <style>
+        .MenuTrang {
+            text-align:center;
+            justify-content:center;
+            display: inline
+        }
+    </style>
+}
+
+
+<!-- Customer Comment -->
+@section Footer{
+    <nav>
+        <h3 style="width:100%">Thành Viên Nhóm</h3>
+    </nav>
+    <div class="testimonial">
+        <div class="small-container">
+            <div class="col-3">
+                <i class="bi bi-chat-left-quote"></i>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Asperiores facere tempora suscipit delectus esse rerum fugit numquam ratione dolor
+                    odio.
+                    Veritatis ut voluptate odit tempora perspiciatis. Numquam quo qui enim.
+                </p>
+                <div class="ratings">
+                    <i class="glyphicon glyphicon-star"></i>
+                    <i class="glyphicon glyphicon-star"></i>
+                    <i class="glyphicon glyphicon-star"></i>
+                    <i class="glyphicon glyphicon-star"></i>
+                    <i class="glyphicon glyphicon-star"></i>
+                </div>
+                <img src="~/Content/images/user-1.png" alt="user">
+                <h3>Lucy Bemana</h3>
+            </div>
+            <div class="col-3">
+                <i class="bi bi-chat-left-quote"></i>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Asperiores facere tempora suscipit delectus esse rerum fugit numquam ratione dolor
+                    odio.
+                    Veritatis ut voluptate odit tempora perspiciatis. Numquam quo qui enim.
+                </p>
+                <div class="ratings">
+                    <i class="glyphicon glyphicon-star"></i>
+                    <i class="glyphicon glyphicon-star"></i>
+                    <i class="glyphicon glyphicon-star"></i>
+                    <i class="glyphicon glyphicon-star"></i>
+                    <i class="glyphicon glyphicon-star-empty"></i>
+                </div>
+                <img src="~/Content/images/user-2.png" alt="user">
+                <h3>Brian Stacy</h3>
+            </div>
+            <div class="col-3">
+                <i class="bi bi-chat-left-quote"></i>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Asperiores facere tempora suscipit delectus esse rerum fugit numquam ratione dolor
+                    odio.
+                    Veritatis ut voluptate odit tempora perspiciatis. Numquam quo qui enim.
+                </p>
+                <div class="ratings">
+                    <i class="glyphicon glyphicon-star"></i>
+                    <i class="glyphicon glyphicon-star"></i>
+                    <i class="glyphicon glyphicon-star"></i>
+                    <i class="glyphicon glyphicon-star"></i>
+                    <i class="glyphicon glyphicon-star-empty"></i>
+                </div>
+                <img src="~/Content/images/user-3.png" alt="user">
+                <h3>Betty Jane</h3>
+            </div>
+            <div class="col-3" style="width: 100%">
+                <i class="bi bi-chat-left-quote"></i>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Asperiores facere tempora suscipit delectus esse rerum fugit numquam ratione dolor
+                    odio.
+                    Veritatis ut voluptate odit tempora perspiciatis. Numquam quo qui enim.
+                </p>
+                <div class="ratings" style="width:100%; margin:0 auto">
+                    <i class="glyphicon glyphicon-star"></i>
+                    <i class="glyphicon glyphicon-star"></i>
+                    <i class="glyphicon glyphicon-star"></i>
+                    <i class="glyphicon glyphicon-star"></i>
+                    <i class="glyphicon glyphicon-star-empty"></i>
+                </div>
+                <img src="~/Content/images/user-3.png" alt="user">
+                <h3 style="width: 100%">Betty Jane</h3>
+            </div>
+        </div>
+    </div>
+    
+    <div class="clear"></div>
+
+    <div class="brands">
+        <div class="small-container">
+            <div class="row">
+                <div class="col-5">
+                    <img src="~/Content/images/logo-godrej.png" alt="logo">
+                </div>
+                <div class="col-5">
+                    <img src="~/Content/images/logo-oppo.png" alt="logo">
+                </div>
+                <div class="col-5">
+                    <img src="~/Content/images/logo-coca-cola.png" alt="logo">
+                </div>
+                <div class="col-5">
+                    <img src="~/Content/images/logo-paypal.png" alt="logo">
+                </div>
+                <div class="col-5">
+                    <img src="~/Content/images/logo-philips.png" alt="logo">
+                </div>
+            </div>
+        </div>
+    </div>
+}

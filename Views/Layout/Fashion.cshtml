@@ -1,0 +1,253 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Shop Homepage - Fashion Shop</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap Core CSS -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .container {
+            padding-top: 10px;
+        }
+        /*Design button Top*/
+        #bttop {
+            width: 40px;
+            height: 40px;
+            position: fixed;
+            bottom: 10px;
+            right: 30px;
+            border: none;
+            background-color: #FF0000;
+            color: #FFF;
+            border-radius: 4px;
+            cursor: pointer;
+            display: none;
+        }
+
+            #bttop:hover {
+                background-color: blue;
+            }
+        /*Design button Login*/
+        .Login {
+            float: right;
+            text-align: center;
+            list-style: none;
+        }
+
+            .Login a {
+                margin-bottom: 20px;
+                line-height: 40px;
+                padding-right: 20px;
+                text-decoration: none;
+                color:#9D9D9D;
+                display: block;
+            }
+                .Login a:hover {
+                    color: #fff;
+                    background-color: transparent;
+                }
+        a {
+            color: #fff;
+        }
+
+        .footer {
+            width: 100%;
+            margin-top: 50px;
+            background-color: #201c29;
+            position: absolute;
+        }
+            .footer .top-foot {
+                float: left;
+                color: #fff;
+            }
+
+            .footer .top-foot .intro{
+                width: 20%;
+                float: left;
+                margin-right: 10px;
+            }
+                .footer .top-foot .intro p{
+                    width: fit-content;
+                }
+
+                .footer .top-foot .category {
+                    width: 20%;
+                    float: left;
+                    margin-right: 10px;
+                }
+
+                    .footer .top-foot .api {
+                        width: 55%;
+                        float: left;
+                     }
+                        .footer .top-foot .api iframe{
+                            width: 250px;
+                            height: 300px;
+                        }
+
+            .footer .bottom-foot {
+                width: 100%;
+                float: left;
+                margin-top: 20px;
+            }
+
+                .footer .bottom-foot p {
+                    color: #fff;
+                    float: left;
+                    width: 50%;
+                }
+           
+    </style>
+</head>
+
+<body>
+   
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="@Url.Action("Index","Fashion")">TFashionA</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="@Url.Action("AllSP","Fashion")">Loại Sản Phẩm</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Contact","Fashion")">Liên Hệ</a>
+                    </li>
+
+                </ul>
+                <li class="Login">
+                    @Html.Action("SoLuongGioHang", "GioHang")
+                </li>
+
+                @if (Session["User"] == null)
+                {
+                    <li class="Login"><a href="@Url.Action("SignUp","NguoiDung")">Đăng Ký</a></li>
+                    <li class="Login"><a href="@Url.Action("Login","NguoiDung")">Đăng Nhập</a></li>
+                }
+                else
+                {
+                    <li class="Login"><a href="@Url.Action("LogOut","NguoiDung")">Đăng Xuất</a></li>
+                    <li class="Login"><a href="#">Xin Chào @Session["User"]</a></li>
+                }
+
+
+
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    @RenderSection("GioHang", false)
+    <!-- Page Content -->
+    <div class="container">
+        <!-- New Product -->
+        <div class="row">
+            @RenderSection("Table", false)
+            <div class="col-md-9">
+                <div>
+                    @RenderBody()
+                </div>
+            </div>
+            @RenderSection("MenuTrang", false)
+        </div>
+        @RenderSection("Footer", false)
+    </div>
+    <!-- /.container -->
+    
+    <!-- Footer -->
+    <div class="footer">
+        <div class="container">
+            <div class="top-foot">
+                <div class="intro">
+                    <h2>Về Chúng Tôi</h2>
+                    <p>Trang phục bạn khoác lên người chính là cách để bạn giới thiệu với mọi người về cá tính sống của mình. Do đó, việc lựa chọn dòng sản phẩm chất lượng chính là cách để bạn thể hiện giá trị bản thân mình.</p>
+                </div>
+                <div class="category">
+                    <h2>Liên Hệ</h2>
+                    <p>Địa Chỉ: </p>
+                    <p>Hotline: 0774685759</p>
+                    <p>Email: chausupersoi123@gmail.com</p>
+                </div>
+                <div class="api">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.125052042565!2d106.71230301533416!3d10.801733161678403!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528a459cb43ab%3A0x6c3d29d370b52a7e!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBDw7RuZyBuZ2jhu4cgVFAuSENN!5e0!3m2!1svi!2s!4v1624897430874!5m2!1svi!2s"
+                            style="border:0;" allowfullscreen="" loading="lazy">
+                    </iframe>
+                    <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FBeautyGirlw%2F&tabs=timeline&width=340&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
+                            style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+                    </iframe>
+                </div>                
+            </div>
+
+            <div class="bottom-foot">
+                <p style="float: left;">Copyright &copy; Your Website 2014</p>
+                <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2FBeautyGirlw%2F&width=450&layout=standard&action=like&size=small&share=true&height=35&appId"
+                        width="450" height="35" style="border:none;overflow:hidden;float: left;" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+                </iframe>
+            </div>
+
+        </div>
+    </div>
+
+    <button id="bttop">
+        <i class="fas fa-arrow-circle-up"></i>
+    </button>
+
+    <!-- /.container -->
+    <!-- jQuery -->
+    <script src="~/Scripts/jquery.js"></script>
+
+    <!--Button Top-->
+    <script src="~/Scripts/ButtonTop.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <!-- Detail-->
+    <script src="~/Scripts/app.js"></script>
+
+    <!-- Login Pop Up-->
+    <script src="~/Scripts/Login_popup.js"></script>
+
+    <!-- Pop Up Covid-->
+    <script>
+        const popup = document.querySelector('.popup');
+        const close = document.querySelector('.close');
+
+        //set time for pop up
+        window.onload = function () {
+            setTimeout(function () {
+                popup.style.display = "block";
+            }, 2000)
+        }
+
+        close.addEventListener('click', () => {
+            popup.style.display = "none";
+        })
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,107 @@
+﻿
+@{ ViewBag.Title = "Contact";
+                Layout = "~/Views/Layout/Contact/_LayoutContact.cshtml"; }
+<style>
+    .fa {
+        text-align: center;
+        font-size: 3em;
+        letter-spacing: 8px;
+        font-weight: 500;
+        font-family: 'Dosis', sans-serif;
+        text-transform: uppercase;
+        text-shadow: 5px 3px 5px #101010;
+    }
+    textarea {
+        margin: 10px 0;
+        outline: none;
+        font-size: .9em;
+        padding: 1em 3em 1em 1em;
+        border: none;
+        margin-bottom: 0.3em;
+        background: rgba(255, 255, 255, 0.85);
+        width: 100%;
+        height: 100px;
+        color: #000;
+        border-radius: 30px;
+        font-weight: 400;
+        font-family: 'Open Sans', sans-serif;
+        letter-spacing: 1px;
+        text-align: center;
+    }
+
+        textarea:focus {
+            height: 50%;
+            text-align: unset;
+            padding: 15px 15px;
+        }
+
+    .Support {
+        padding-top: 10%;
+    }
+    .in{
+        width: 30%;
+        margin-top: 20px;
+        margin-left: 35%;
+    }
+</style>
+@using (Html.BeginForm())
+{
+<div class="contact-box">
+    <div class="contact-left">
+        <h2>Địa Chỉ</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.125052042565!2d106.71230301533416!3d10.801733161678403!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528a459cb43ab%3A0x6c3d29d370b52a7e!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBDw7RuZyBuZ2jhu4cgVFAuSENN!5e0!3m2!1svi!2s!4v1624897430874!5m2!1svi!2s" allowfullscreen="" loading="lazy">
+        </iframe>
+    </div>
+    <div class="contact-right">
+        <div class="right-top">
+            <div class="row">
+                <p> <h2>Thông Tin</h2></p>
+            </div>
+            <div class="row">
+                <p><img src="~/Content/images/home.png">Địa Chỉ:123 Đường XXX, Phường YYY, Quận ZZZ, Tp HCM <br></p>
+            </div>
+            <div class="clear"></div>
+            <div class="row">
+                <p><img src="~/Content/images/phone.png">Bán Lẻ:XXX-XXX-XXXX <br></p>
+            </div>
+            <div class="clear"></div>
+            <div class="row">
+                <p><img src="~/Content/images/phone.png">Bán Sỉ:YYY-YYY-YYYY <br>  </p>
+            </div>
+            <div class="clear"></div>
+            <div class="row">
+                <p><img src="~/Content/images/email.png">Email:ZZZ@gmail.com</p>
+            </div>
+            <div class="clear"></div>
+            <div class="row">
+                <p><img src="~/Content/images/time.png">Thời Gian Làm Việc: 8H-22H Thứ Hai-Chủ Nhật</p>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="right-bottom">
+            <h2>Mạng Xã Hội</h2>
+
+            <a href="#"><img src="~/Content/images/fb.png"></a>
+            <a href="#"><img src="~/Content/images/twitter.png"></a>
+            <a href="#"><img src="~/Content/images/instagram.png"></a>
+            <div class="clear"></div>
+            <div style="margin-top:25px;" class="back">
+                <a class="submit" href="@Url.Action("Index", "Fashion")" style="margin-top: 50px">Back To Home</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+<div class="Support">
+    <div class="header-w3l">
+        <h1>Đóng Góp Ý Kiến</h1>
+    </div>
+
+    <div class="pom-agile">
+        <textarea placeholder="Ý Kiến Của Các Bạn Là Điều Giúp Chúng Tôi Tốt Hơn Mỗi Ngày" name="LyDo" class="pass" type="text" required=""></textarea>
+        <span class="icon2"><i aria-hidden="true"></i></span>
+        <input class="submit in" type="Submit" value="Gửi">
+    </div>
+</div>
+}
+
