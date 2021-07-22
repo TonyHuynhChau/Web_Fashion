@@ -69,6 +69,32 @@
         </div>
     </div>
 }
+
+<style>
+    .plus img {
+        border-radius: 15%;
+        width: 80%;
+        height: 50%;
+        padding-top: 20%;
+        margin-top: 20%;
+    }
+
+    .plus:hover img{
+        margin-top: 0;
+    }
+</style>
+
+<div class="col-sm-4 col-lg-4 col-md-4">
+    <div class="thumbnail plus">
+        <a href="@Url.Action("AllSP","Fashion")">
+            <img src="~/Content/images/image-removebg-preview (1).png">
+
+            <div class="caption" style="margin-bottom:10px">
+                <a href="@Url.Action("AllSP","Fashion")" class="buy">Xem Thêm</a>
+            </div>
+        </a>
+    </div>
+</div>
 @section MenuTrang{
    
     <div class="MenuTrang">
