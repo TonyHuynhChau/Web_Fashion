@@ -1,13 +1,8 @@
-﻿/*!
- * Start Bootstrap - Shop Homepage HTML Template (http://startbootstrap.com)
- * Code licensed under the Apache License v2.0.
- * For details, see http://www.apache.org/licenses/LICENSE-2.0.
- */
-
+﻿
 body {
     margin: 0 auto;
     padding-top: 70px;
-    background-image: url(/Content/images/background_fashion.png);
+    background-image: url(/Content/images/background00.jpg);
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -30,11 +25,11 @@ h3 {
 }
 
 .carousel-inner {
-    height: 700px;
+    height: auto;
 }
 
 .slide-image {
-    width: 100%;
+    width: 2460px;
 }
 
 .carousel-holder {
