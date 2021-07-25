@@ -495,6 +495,82 @@ namespace Fashion.Controllers
             }
         }
 
+        [HttpGet]
+        public ActionResult DonDatHang(int? page)
+        {
+            int pagesize = 5;
+            int pageNum = (page ?? 1);
+            var GioHienTai = DateTime.Today;
+            var list = context.DONDATHANGs.Where(s => s.Ngaydat >= GioHienTai).OrderByDescending(i => i.Ngaydat).ToList();
+            return View(list.ToPagedList(pageNum, pagesize));
+        }
+        [HttpPost]
+        public ActionResult DonDatHang(string date, string date2, int? page)
+        {
+            int pagesize = 5;
+            int pageNum = (page ?? 1);
+            var Date = DateTime.Parse(date);
 
+            if (date2 == "")
+            {
+                var listdate = context.DONDATHANGs.Where(s => s.Ngaydat >= Date).OrderByDescending(i => i.Ngaydat).ToList();
+                return View(listdate.ToPagedList(pageNum, pagesize));
+            }
+            var Date2 = DateTime.Parse(date2);
+            var list = context.DONDATHANGs.Where(s => s.Ngaydat >= Date && s.Ngaydat <= Date2).OrderByDescending(i => i.Ngaydat).ToList();
+            return View(list.ToPagedList(pageNum, pagesize));
+        }
+
+        public ActionResult ChiTietDonDatHang(int? id)
+        {
+            if (Session["TKAdmin"] == null)
+            {
+                return RedirectToAction("Index", "Fashion");
+            }
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+            var list = context.CHITIETDONTHANGs.Where(s => s.MaDonHang == id).OrderByDescending(s => s.MaSP).ToList();
+            return View(list);
+        }
+
+        [HttpGet]
+        public ActionResult SuaDonDatHang(int id)
+        {
+            //if (Session["TKAdmin"] == null)
+            //{
+            //    return RedirectToAction("Index", "Fashion");
+            //}
+
+            DONDATHANG ncc = context.DONDATHANGs.SingleOrDefault(n => n.MaDonHang == id);
+            if (ncc == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(ncc);
+        }
+
+        [HttpPost, ActionName("SuaDonDatHang")]
+        public ActionResult XacNhanSuaDonDatHang(int id)
+        {
+            if (Session["TKAdmin"] == null)
+            {
+                return RedirectToAction("Index", "Fashion");
+            }
+            else
+            {
+                DONDATHANG ncc = context.DONDATHANGs.SingleOrDefault(n => n.MaDonHang == id);
+                if (ncc == null)
+                {
+                    Response.StatusCode = 404;
+                    return null;
+                }
+                UpdateModel(ncc);
+                context.SubmitChanges();
+                return RedirectToAction("DonDatHang");
+            }
+        }
     }
 }

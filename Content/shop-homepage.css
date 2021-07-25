@@ -342,7 +342,7 @@ nav h3 {
     }
 
     .footer .top-foot .api iframe {
-        width: 255px;
+        width: 230px;
     }
 }
 
@@ -408,9 +408,6 @@ nav h3 {
 }
 
 @media(max-width:380px){
-    .footer{
-        width: 125%;
-    }
     .footer .top-foot .intro {
         width: fit-content;
     }

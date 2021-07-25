@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Fashion.Models.CHITIETDONTHANG>
+
+@{
+    ViewBag.Title = "ChiTietDonDatHang";
+    Layout = "~/Views/Layout/Admin/_LayoutAdmin.cshtml";
+}
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Tên Người Mua")
+        </th>
+        <th>
+            @Html.DisplayName("Sản Phẩm")
+        </th>
+        <th>
+            @Html.DisplayName("Ảnh")
+        </th>
+        <th>
+            @Html.DisplayName("Số Lượng")
+        </th>
+        <th>
+            @Html.DisplayName("Đơn Giá")
+        </th>
+        <th>
+            @Html.DisplayName("Thành Tiền")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DONDATHANG.KHACHHANG.HoTen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SANPHAM.TenSP)                
+            </td>
+            <td>
+                <img src="~/Sản Phẩm/@Html.DisplayFor(modelItem => item.SANPHAM.Anhbia)" style="width:10%" alt="Alternate Text" />                
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Soluong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dongia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThanhTien)
+            </td>
+        </tr>
+    }
+<div>
+    <a href="@Url.Action("DonDatHang","ChucNang")">Back</a>
+</div>
+</table>

@@ -1,0 +1,211 @@
+﻿@using Fashion.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<DONDATHANG>
+
+@{
+    ViewBag.Title = "DonDatHang";
+    Layout = "~/Views/Layout/Admin/_LayoutAdmin.cshtml";
+}
+@using (Html.BeginForm())
+{
+    <input style="color:black" type="date" required name="date" />
+    <input style="color:black;text-align:center" type="submit" value="Tìm" class="btn btn-default" />
+    <input style="color:black;float:right" type="date" name="date2" />
+}
+<table class="table" border="1">
+    <tr>
+        <th>
+            @Html.DisplayName("Tên Khách Hàng")
+        </th>
+        <th>
+            @Html.DisplayName("Ngày Đặt")
+        </th>
+        <th>
+            @Html.DisplayName("Ngày Giao")
+        </th>
+        <th>
+            @Html.DisplayName("Tình Trạng Giao Hàng")
+        </th>
+        <th>
+            @Html.DisplayName("Thành Toán")
+        </th>
+        <th>
+            @Html.DisplayName("Tổng tiền")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.KHACHHANG.HoTen)
+            </td>
+            <td>
+                @String.Format("{0:dd/MM/yyyy}", item.Ngaydat)
+            </td>
+            <td>
+                @String.Format("{0:dd/MM/yyyy}", item.Ngaygiao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tinhtranggiaohang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dathanhtoan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TongTien)
+            </td>
+            <td class="tool">                
+                <a href="@Url.Action("ChiTietDonDatHang","ChucNang", new { id = item.MaDonHang })">Chi tiết</a> |      
+                <a href="@Url.Action("SuaDonDatHang","ChucNang", new { id = item.MaDonHang })">Sửa</a>               
+            </td>
+        </tr>
+    }
+
+</table>
+
+@section MenuTrangAdmin{
+    <div class="page">
+        @Html.PagedListPager(Model, page => Url.Action("DonDatHang", new { page = page }))
+    </div>
+    <style>
+        .pagination {
+            position: relative;
+            background: #fff;
+            display: flex;
+            padding: 10px 20px;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(0,0,0,.2);
+            text-align: center;
+            justify-content: center
+        }
+
+            .pagination > li {
+                margin: 0 5px;
+                width: 50px;
+                height: 50px;
+                line-height: 50px;
+                text-align: center;
+            }
+
+                .pagination > li > a {
+                    color: #777;
+                    font-weight: 600;
+                    border-radius: 50%;
+                    display: block;
+                }
+
+                .pagination > li:hover a,
+                .pagination > li.active a {
+                    background: #333;
+                    color: #fff
+                }
+
+
+        .tool > a:hover {
+            text-decoration: underline;
+        }
+
+        .page {
+            text-align: center;
+            justify-content: center;
+            display: inline;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        th {
+            height: 50px;
+            background: #ba68c8;
+            color: #fafafa;
+            text-transform: uppercase;
+        }
+
+        td {
+            text-align: center;
+        }
+
+        th, td {
+            padding-left: 20px;
+            padding-right: 10px;
+            padding-top: 15px;
+            padding-bottom: 20px;
+        }
+
+        tr:hover {
+            background-color: #ff006e;
+        }
+
+
+        @@media(max-width: 430px) {
+            table {
+                font-size: 10px;
+            }
+
+            .pagination {
+                width: 95%;
+                padding: 5px 20px;
+                margin-left: 15px;
+            }
+        }
+
+        @@media(max-width: 320px) {
+            table {
+                font-size: 8px;
+            }
+
+            .pagination {
+                width: 95%;
+                padding: 5px 20px;
+                margin-left: 15px;
+                font-size: 10px;
+            }
+        }
+
+        @@media(max-width: 1024px) {
+            table {
+                font-size: 10px;
+            }
+
+            th, td {
+                padding-right: 0px;
+                padding-left: 10px;
+            }
+        }
+
+        @@media(max-width: 768px) {
+            table {
+                font-size: 9px;
+            }
+
+            th, td {
+                padding-right: 0px;
+                padding-left: 5px;
+            }
+        }
+
+        @@media(max-width: 430px) {
+            table {
+                font-size: 9px;
+            }
+
+            th, td {
+                padding-right: 0px;
+                padding-left: 5px;
+            }
+        }
+
+        @@media(max-width: 320px) {
+            table {
+                font-size: 8px;
+            }
+        }
+
+        .tri-state.list-box {
+            color: black;
+        }
+    </style>
+}

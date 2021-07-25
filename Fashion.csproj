@@ -326,6 +326,9 @@
     <Content Include="Views\ChucNang\DSLSP.cshtml" />
     <Content Include="Views\ChucNang\SuaLSP.cshtml" />
     <Content Include="Views\ChucNang\XoaLSP.cshtml" />
+    <Content Include="Views\ChucNang\DonDatHang.cshtml" />
+    <Content Include="Views\ChucNang\ChiTietDonDatHang.cshtml" />
+    <Content Include="Views\ChucNang\SuaDonDatHang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -149,6 +149,7 @@ namespace Fashion.Controllers
             dONDATHANG.Ngaydat = DateTime.Now;
             var ngaygiao = String.Format("{0:MM/dd/yyyy}", collection["NgayGiao"]);
             dONDATHANG.Ngaygiao = DateTime.Parse(ngaygiao);
+            dONDATHANG.TongTien =Decimal.Parse(TongTien().ToString());            
             dONDATHANG.Tinhtranggiaohang = false;
             dONDATHANG.Dathanhtoan = false;
             data.DONDATHANGs.InsertOnSubmit(dONDATHANG);
@@ -160,6 +161,7 @@ namespace Fashion.Controllers
                 CT.MaSP = item.masp;
                 CT.Soluong = item.soluong;
                 CT.Dongia = (decimal)item.dongia;
+                CT.ThanhTien =(decimal)item.thanhtien;
                 data.CHITIETDONTHANGs.InsertOnSubmit(CT);
             }
             data.SubmitChanges();
