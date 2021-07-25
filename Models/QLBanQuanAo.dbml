@@ -7,13 +7,6 @@
       <Column Name="Hoten" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Admin" Member="Admin1s">
-    <Type Name="Admin1">
-      <Column Name="UserAdmin" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="PassAdmin" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
-      <Column Name="Hoten" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.CHITIETDONTHANG" Member="CHITIETDONTHANGs">
     <Type Name="CHITIETDONTHANG">
       <Column Name="MaDonHang" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -61,6 +54,13 @@
       <Association Name="KHACHHANG_HoTro" Member="HoTro" ThisKey="MaKH" OtherKey="MaKH" Type="HoTro" Cardinality="One" />
     </Type>
   </Table>
+  <Table Name="dbo.Loaisanpham" Member="Loaisanphams">
+    <Type Name="Loaisanpham">
+      <Column Name="MaloaiSP" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Tensanpham" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Loaisanpham_SANPHAM" Member="SANPHAMs" ThisKey="MaloaiSP" OtherKey="MaloaiSP" Type="SANPHAM" />
+    </Type>
+  </Table>
   <Table Name="dbo.NCC" Member="NCCs">
     <Type Name="NCC">
       <Column Name="MaNCC" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -68,13 +68,6 @@
       <Column Name="Diachi" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="Dienthoai" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Association Name="NCC_SANPHAM" Member="SANPHAMs" ThisKey="MaNCC" OtherKey="MaNCC" Type="SANPHAM" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Loaisanpham" Member="Loaisanphams">
-    <Type Name="Loaisanpham">
-      <Column Name="MaloaiSP" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Tensanpham" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="Loaisanpham_SANPHAM" Member="SANPHAMs" ThisKey="MaloaiSP" OtherKey="MaloaiSP" Type="SANPHAM" />
     </Type>
   </Table>
   <Table Name="dbo.SANPHAM" Member="SANPHAMs">

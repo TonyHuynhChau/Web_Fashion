@@ -33,9 +33,6 @@ namespace Fashion.Models
     partial void InsertAdmin(Admin instance);
     partial void UpdateAdmin(Admin instance);
     partial void DeleteAdmin(Admin instance);
-    partial void InsertAdmin1(Admin1 instance);
-    partial void UpdateAdmin1(Admin1 instance);
-    partial void DeleteAdmin1(Admin1 instance);
     partial void InsertCHITIETDONTHANG(CHITIETDONTHANG instance);
     partial void UpdateCHITIETDONTHANG(CHITIETDONTHANG instance);
     partial void DeleteCHITIETDONTHANG(CHITIETDONTHANG instance);
@@ -48,12 +45,12 @@ namespace Fashion.Models
     partial void InsertKHACHHANG(KHACHHANG instance);
     partial void UpdateKHACHHANG(KHACHHANG instance);
     partial void DeleteKHACHHANG(KHACHHANG instance);
-    partial void InsertNCC(NCC instance);
-    partial void UpdateNCC(NCC instance);
-    partial void DeleteNCC(NCC instance);
     partial void InsertLoaisanpham(Loaisanpham instance);
     partial void UpdateLoaisanpham(Loaisanpham instance);
     partial void DeleteLoaisanpham(Loaisanpham instance);
+    partial void InsertNCC(NCC instance);
+    partial void UpdateNCC(NCC instance);
+    partial void DeleteNCC(NCC instance);
     partial void InsertSANPHAM(SANPHAM instance);
     partial void UpdateSANPHAM(SANPHAM instance);
     partial void DeleteSANPHAM(SANPHAM instance);
@@ -97,14 +94,6 @@ namespace Fashion.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<Admin1> Admin1s
-		{
-			get
-			{
-				return this.GetTable<Admin1>();
-			}
-		}
-		
 		public System.Data.Linq.Table<CHITIETDONTHANG> CHITIETDONTHANGs
 		{
 			get
@@ -137,19 +126,19 @@ namespace Fashion.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<NCC> NCCs
-		{
-			get
-			{
-				return this.GetTable<NCC>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Loaisanpham> Loaisanphams
 		{
 			get
 			{
 				return this.GetTable<Loaisanpham>();
+			}
+		}
+		
+		public System.Data.Linq.Table<NCC> NCCs
+		{
+			get
+			{
+				return this.GetTable<NCC>();
 			}
 		}
 		
@@ -187,116 +176,6 @@ namespace Fashion.Models
     #endregion
 		
 		public Admin()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserAdmin", DbType="VarChar(30) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string UserAdmin
-		{
-			get
-			{
-				return this._UserAdmin;
-			}
-			set
-			{
-				if ((this._UserAdmin != value))
-				{
-					this.OnUserAdminChanging(value);
-					this.SendPropertyChanging();
-					this._UserAdmin = value;
-					this.SendPropertyChanged("UserAdmin");
-					this.OnUserAdminChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PassAdmin", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
-		public string PassAdmin
-		{
-			get
-			{
-				return this._PassAdmin;
-			}
-			set
-			{
-				if ((this._PassAdmin != value))
-				{
-					this.OnPassAdminChanging(value);
-					this.SendPropertyChanging();
-					this._PassAdmin = value;
-					this.SendPropertyChanged("PassAdmin");
-					this.OnPassAdminChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Hoten", DbType="NVarChar(30)")]
-		public string Hoten
-		{
-			get
-			{
-				return this._Hoten;
-			}
-			set
-			{
-				if ((this._Hoten != value))
-				{
-					this.OnHotenChanging(value);
-					this.SendPropertyChanging();
-					this._Hoten = value;
-					this.SendPropertyChanged("Hoten");
-					this.OnHotenChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Admin")]
-	public partial class Admin1 : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _UserAdmin;
-		
-		private string _PassAdmin;
-		
-		private string _Hoten;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnUserAdminChanging(string value);
-    partial void OnUserAdminChanged();
-    partial void OnPassAdminChanging(string value);
-    partial void OnPassAdminChanged();
-    partial void OnHotenChanging(string value);
-    partial void OnHotenChanged();
-    #endregion
-		
-		public Admin1()
 		{
 			OnCreated();
 		}
@@ -1362,6 +1241,120 @@ namespace Fashion.Models
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Loaisanpham")]
+	public partial class Loaisanpham : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _MaloaiSP;
+		
+		private string _Tensanpham;
+		
+		private EntitySet<SANPHAM> _SANPHAMs;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnMaloaiSPChanging(int value);
+    partial void OnMaloaiSPChanged();
+    partial void OnTensanphamChanging(string value);
+    partial void OnTensanphamChanged();
+    #endregion
+		
+		public Loaisanpham()
+		{
+			this._SANPHAMs = new EntitySet<SANPHAM>(new Action<SANPHAM>(this.attach_SANPHAMs), new Action<SANPHAM>(this.detach_SANPHAMs));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaloaiSP", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int MaloaiSP
+		{
+			get
+			{
+				return this._MaloaiSP;
+			}
+			set
+			{
+				if ((this._MaloaiSP != value))
+				{
+					this.OnMaloaiSPChanging(value);
+					this.SendPropertyChanging();
+					this._MaloaiSP = value;
+					this.SendPropertyChanged("MaloaiSP");
+					this.OnMaloaiSPChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tensanpham", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Tensanpham
+		{
+			get
+			{
+				return this._Tensanpham;
+			}
+			set
+			{
+				if ((this._Tensanpham != value))
+				{
+					this.OnTensanphamChanging(value);
+					this.SendPropertyChanging();
+					this._Tensanpham = value;
+					this.SendPropertyChanged("Tensanpham");
+					this.OnTensanphamChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Loaisanpham_SANPHAM", Storage="_SANPHAMs", ThisKey="MaloaiSP", OtherKey="MaloaiSP")]
+		public EntitySet<SANPHAM> SANPHAMs
+		{
+			get
+			{
+				return this._SANPHAMs;
+			}
+			set
+			{
+				this._SANPHAMs.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_SANPHAMs(SANPHAM entity)
+		{
+			this.SendPropertyChanging();
+			entity.Loaisanpham = this;
+		}
+		
+		private void detach_SANPHAMs(SANPHAM entity)
+		{
+			this.SendPropertyChanging();
+			entity.Loaisanpham = null;
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.NCC")]
 	public partial class NCC : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1521,120 +1514,6 @@ namespace Fashion.Models
 		{
 			this.SendPropertyChanging();
 			entity.NCC = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Loaisanpham")]
-	public partial class Loaisanpham : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _MaloaiSP;
-		
-		private string _Tensanpham;
-		
-		private EntitySet<SANPHAM> _SANPHAMs;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnMaloaiSPChanging(int value);
-    partial void OnMaloaiSPChanged();
-    partial void OnTensanphamChanging(string value);
-    partial void OnTensanphamChanged();
-    #endregion
-		
-		public Loaisanpham()
-		{
-			this._SANPHAMs = new EntitySet<SANPHAM>(new Action<SANPHAM>(this.attach_SANPHAMs), new Action<SANPHAM>(this.detach_SANPHAMs));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaloaiSP", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int MaloaiSP
-		{
-			get
-			{
-				return this._MaloaiSP;
-			}
-			set
-			{
-				if ((this._MaloaiSP != value))
-				{
-					this.OnMaloaiSPChanging(value);
-					this.SendPropertyChanging();
-					this._MaloaiSP = value;
-					this.SendPropertyChanged("MaloaiSP");
-					this.OnMaloaiSPChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tensanpham", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string Tensanpham
-		{
-			get
-			{
-				return this._Tensanpham;
-			}
-			set
-			{
-				if ((this._Tensanpham != value))
-				{
-					this.OnTensanphamChanging(value);
-					this.SendPropertyChanging();
-					this._Tensanpham = value;
-					this.SendPropertyChanged("Tensanpham");
-					this.OnTensanphamChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Loaisanpham_SANPHAM", Storage="_SANPHAMs", ThisKey="MaloaiSP", OtherKey="MaloaiSP")]
-		public EntitySet<SANPHAM> SANPHAMs
-		{
-			get
-			{
-				return this._SANPHAMs;
-			}
-			set
-			{
-				this._SANPHAMs.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_SANPHAMs(SANPHAM entity)
-		{
-			this.SendPropertyChanging();
-			entity.Loaisanpham = this;
-		}
-		
-		private void detach_SANPHAMs(SANPHAM entity)
-		{
-			this.SendPropertyChanging();
-			entity.Loaisanpham = null;
 		}
 	}
 	

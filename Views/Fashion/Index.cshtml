@@ -7,14 +7,7 @@
 
 <!-- Custom CSS -->
 <link href="~/Content/shop-homepage.css" rel="stylesheet"/>
-<style>
-    .member {
-        background-color: #201c29;
-    }
-    .member p {
-        color: #0c97da;
-    }
-</style>
+
 
 <div class="row carousel-holder">
     <div class="col-md-12">
@@ -179,7 +172,53 @@
                 <img src="~/Content/images/Chau.png" alt="user">
                 <h3>Huỳnh Bảo Châu</h3>
             </div>
-            <div class="col-3 member" style=" width: 97%; margin-left: 33px;">
+
+            <style>
+                
+                .member {
+                    background-color: #201c29;
+                }
+
+                .member p {
+                    color: #0c97da;
+                }
+
+                .last {
+                    float: left;
+                    text-align: center;
+                    margin-bottom: 15px;
+                    padding: 40px 20px;
+                    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+                    cursor: pointer;
+                    transition: transform 0.5s;
+                    width: 97%;
+                    margin-left: 33px;
+                }
+                    .last img {
+                        width: 50px;
+                        margin-top: 20px;
+                        border-radius: 50px;
+                    }
+
+                    .last:hover {
+                        transform: translateY(-10px);
+                    }
+
+                    .last h3 {
+                        width: 98%;
+                        padding-top: 15px;
+                        font-weight: 600;
+                        color: rgba(255, 255, 255, 0.877);
+                        font-size: 16px;
+                    }
+                @@media(max-width: 1024px){
+                    .last {
+                        width: 100%;
+                        margin-left: 0px;
+                    }
+                }
+            </style>
+            <div class="member last">
                 <i class="bi bi-chat-left-quote"></i>
                 <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -187,7 +226,7 @@
                     odio.
                     Veritatis ut voluptate odit tempora perspiciatis. Numquam quo qui enim.
                 </p>
-                <div class="ratings" style="width:100%; margin:0 auto">
+                <div class="ratings" style="width:100%;">
                     <i class="glyphicon glyphicon-star"></i>
                     <i class="glyphicon glyphicon-star"></i>
                     <i class="glyphicon glyphicon-star"></i>
@@ -195,7 +234,7 @@
                     <i class="glyphicon glyphicon-star-empty"></i>
                 </div>
                 <img src="~/Content/images/Kiet.png" alt="user">
-                <h3 style="width: 100%">Nguyễn Đình Anh Kiệt</h3>
+                <h3>Nguyễn Đình Anh Kiệt</h3>
             </div>
         </div>
     </div>
